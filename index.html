@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <meta charset="UTF-8">
     <title>Guess until it CONSUMES your soul, MUAHAHAHAHA! </title>
     <script>
@@ -14,22 +15,33 @@
 
         function make_guess() {
             var the_guess = $('#guess_input');
-            switch(the_guess) {
-                case the_number:
-                    $('#response_div').text("You guessed it!");
-                    break;
-                case (the_number - 9):
-                    $('#response_div').html("Too High!");
-                    break;
-                case (the_number + 9):
-                    $('#response_div').html("Too Low!");
-                    break;
-                default:
-                    $('#response_div').html("Not within range, try again!");
+            if (the_guess === the_number) {
+                $('#response_div').html("You guessed it!");
+            } else if(the_guess > the_number) {
+                $('#response_div').html("Too High!");
+            } else if(the_guess < the_number) {
+                $('#response_div').html("Too Low!");
+            } else {
+                $('#response_div').html("Not within range, try again!");
             }
+//            switch(the_guess) {
+//                case the_number:
+//                    $('#response_div').html("You guessed it!");
+//                    break;
+//                case (the_number - 9):
+//                    $('#response_div').html("Too High!");
+//                    break;
+//                case (the_number + 9):
+//                    $('#response_div').html("Too Low!");
+//                    break;
+//                default:
+//                    $('#response_div').html("Not within range, try again!");
+//            }
         }
-
-        $('#button').click(make_guess);
+        function apply_click_handlers(){
+            $('#button').click(make_guess);
+        }
+        $(document).ready(apply_click_handlers);
     </script>
 </head>
 <body onload="pick_number">
