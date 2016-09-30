@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>Guess until it CONSUMES your soul, MUAHAHAHAHA! </title>
+    <script>
+        var the_number = null;
+
+        function pick_number() {
+            var random_number = Math.floor((Math.random() * 10) + 1);
+            return random_number;
+        }
+
+        function make_guess() {
+            var the_guess = $('#guess_input');
+            switch(the_guess) {
+                case the_number:
+                    $('#response_div').text("You guessed it!");
+                    break;
+                case (the_number - 9):
+                    $('#response_div').html("Too High!");
+                    break;
+                case (the_number + 9):
+                    $('#response_div').html("Too Low!");
+                    break;
+                default:
+                    $('#response_div').html("Not within range, try again!");
+            }
+        }
+
+        $('#button').click(make_guess);
+    </script>
+</head>
+<body onload="pick_number">
+    <input id="guess_input" type="number" min="1" max="10" title="guess input" placeholder="Pick a # from 1-10">
+    <button type="submit" id="button" name="submit_button">Submit</button>
+    <div id="response_div"></div>
+</body>
+</html>
