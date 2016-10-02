@@ -14,12 +14,12 @@
         }
 
         function make_guess() {
-            var the_guess = $('#guess_input');
+            var the_guess = $('#guess_input').val();
             if (the_guess === the_number) {
                 $('#response_div').html("You guessed it!");
-            } else if(the_guess > the_number) {
+            } else if(the_guess > the_number && the_guess <= 10) {
                 $('#response_div').html("Too High!");
-            } else if(the_guess < the_number) {
+            } else if(the_guess < the_number && the_guess >= 1) {
                 $('#response_div').html("Too Low!");
             } else {
                 $('#response_div').html("Not within range, try again!");
