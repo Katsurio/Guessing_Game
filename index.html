@@ -13,8 +13,8 @@
         }
         function make_guess() {
             console.log(the_number);
-            var the_guess = $('#guess_input').val();
-            if (the_guess == the_number) {
+            var the_guess = parseInt($('#guess_input').val());
+            if (the_guess === the_number) {
                 $('#response_div').html("You guessed it!");
             } else if(the_guess > the_number && the_guess <= 10) {
                 $('#response_div').html("Too High!");
