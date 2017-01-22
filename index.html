@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <meta charset="UTF-8">
+    <title>Guess until it CONSUMES your soul, MUAHAHAHAHA! </title>
+    <script>
+        var the_number = pick_number();
+        function pick_number() {
+            var random_number = Math.floor((Math.random() * 10) + 1);
+            return random_number;
+        }
+        function make_guess() {
+            console.log(the_number);
+            var the_guess = parseInt($('#guess_input').val());
+            if (the_guess === the_number) {
+                $('#response_div').html("You guessed it!");
+            } else if(the_guess > the_number && the_guess <= 10) {
+                $('#response_div').html("Too High!");
+            } else if(the_guess < the_number && the_guess >= 1) {
+                $('#response_div').html("Too Low!");
+            } else {
+                $('#response_div').html("Not within range, try again!");
+            }
+        }
+        function apply_click_handlers(){
+            $('#button').click(make_guess);
+        }
+        $(document).ready(apply_click_handlers);
+    </script>
+</head>
+<body onload="pick_number()">
+    <input id="guess_input" type="number" min="1" max="10" title="guess input" placeholder="Pick a # from 1-10" style="width: 15%;">
+    <button type="submit" id="button" name="submit_button">Submit</button>
+    <div id="response_div"></div>
+</body>
+</html>
